@@ -33,7 +33,7 @@ export const projects: Project[] = [
     id: "sweatshot",
     title: "SweatShot",
     description:
-      "Fitness accountability app live on iOS and Android. Post dual camera proof of your workout to a private friend circle every day. Build streaks, compete on leaderboards, and feel the FOMO when your crew shows up and you don't.",
+      "Fitness accountability app for iOS and Android, in TestFlight beta. Post dual camera proof of your workout to a private friend circle every day. Build streaks, compete on leaderboards, and feel the FOMO when your crew shows up and you don't.",
     stack: [
       { name: "React Native", color: "blue" },
       { name: "Expo", color: "blue" },
@@ -43,7 +43,7 @@ export const projects: Project[] = [
     ],
     github: null,
     live: "https://sweatshot.app",
-    status: "live",
+    status: "dev",
     year: "2026",
     featured: true,
     visual: "sweatshot",

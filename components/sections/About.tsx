@@ -29,7 +29,7 @@ const fromRight = {
 };
 
 const stats = [
-  { icon: Code,   value: "5",    label: "projects shipped" },
+  { icon: Code,   value: "2",    label: "projects shipped" },
   { icon: Brain,  value: "∞",    label: "AI rabbit holes"  },
   { icon: Rocket, value: "2025", label: "cohort"           },
 ];
