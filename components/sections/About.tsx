@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Brain, Code, Rocket } from "@phosphor-icons/react";
+import { GraduationCap, Trophy, Briefcase } from "@phosphor-icons/react";
 
 /* Header slides from left */
 const fromLeft = {
@@ -29,9 +29,24 @@ const fromRight = {
 };
 
 const stats = [
-  { icon: Code,   value: "2",    label: "projects shipped" },
-  { icon: Brain,  value: "∞",    label: "AI rabbit holes"  },
-  { icon: Rocket, value: "2025", label: "cohort"           },
+  { icon: GraduationCap, value: "85%",    label: "Year 1, First Class Honours" },
+  { icon: Trophy,        value: "Top 20", label: "of 280 in my year"           },
+  { icon: Briefcase,     value: "6+",     label: "client projects at Bynle"    },
+];
+
+const experience = [
+  {
+    role: "Co-founder & software developer",
+    org: "Bynle",
+    period: "May 2025 – now",
+    detail: "3-person studio building custom websites and web apps for small businesses. 6+ clients.",
+  },
+  {
+    role: "Undergraduate lab tutor",
+    org: "DCU School of Computing",
+    period: "Sept 2026 – now",
+    detail: "Weekly labs (4 h/week) for first-year Computer Programming I and II (Python).",
+  },
 ];
 
 export default function About() {
@@ -78,23 +93,28 @@ export default function About() {
 
             <div className="divider my-6" />
 
-            {/* Philosophy quote — pops in with scale */}
-            <motion.figure
-              initial={{ opacity: 0, scale: 0.94, y: 20 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            {/* Experience */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ type: "spring", damping: 20, stiffness: 220, delay: 0.2 }}
-              className="rounded-xl p-5"
-              style={{ background: "var(--surface)" }}
+              transition={{ type: "spring", damping: 20, stiffness: 200, delay: 0.1 }}
             >
-              <blockquote className="font-serif text-lg text-ink italic leading-snug tracking-[-0.01em]">
-                "Since AI can make crazy websites, I just want to represent
-                myself in simple ways."
-              </blockquote>
-              <figcaption className="mt-3 text-xs text-muted font-mono">
-                — Eugenio Bustamante, on this very portfolio
-              </figcaption>
-            </motion.figure>
+              <div className="text-xs text-muted uppercase tracking-widest mb-4 font-medium">
+                Experience
+              </div>
+              <div className="space-y-4">
+                {experience.map(({ role, org, period, detail }) => (
+                  <div key={org} className="flex items-start justify-between gap-4">
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm text-ink font-medium">{role} — {org}</div>
+                      <div className="text-xs text-muted mt-0.5 leading-relaxed">{detail}</div>
+                    </div>
+                    <div className="text-xs text-muted font-mono shrink-0">{period}</div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           </div>
 
           {/* Stats column — each card flies from right */}
@@ -133,7 +153,7 @@ export default function About() {
                 Currently studying
               </div>
               <div className="flex flex-wrap gap-1.5">
-                {["Transformers", "RL", "Systems Design", "Rust"].map((t) => (
+                {["DSA", "C", "DevOps", "Japanese"].map((t) => (
                   <span key={t} className="tag tag-amber">{t}</span>
                 ))}
               </div>
