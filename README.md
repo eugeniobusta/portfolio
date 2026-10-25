@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# eugeniobusta.com
 
-## Getting Started
+Personal portfolio for [Eugenio Bustamante](https://www.eugeniobusta.com) — CS student at DCU, software developer.
 
-First, run the development server:
+**Live site:** https://www.eugeniobusta.com
+
+---
+
+## Stack
+
+- **Next.js 16** (App Router) · **React 19** · **TypeScript**
+- **Tailwind CSS v4** · **Framer Motion** · **React Three Fiber**
+- **EmailJS** (contact form) · **Vercel** (hosting)
+
+---
+
+## Running locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm ci
+npm run dev   # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The contact form requires three `NEXT_PUBLIC_EMAILJS_*` variables. In production these are set in Vercel → Project → Settings → Environment Variables. For local development, create `.env.local`:
 
-## Learn More
+```
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=
+```
 
-To learn more about Next.js, take a look at the following resources:
+Without them the form will fail gracefully with a direct-email fallback.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project structure
 
-## Deploy on Vercel
+```
+app/
+  page.tsx              # Homepage (Hero, Projects, About, Skills, Contact)
+  layout.tsx            # Root layout, metadata, fonts
+  opengraph-image.tsx   # OG preview card (1200×630)
+  about/page.tsx        # Hidden stub accessed from The Lab
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+components/
+  sections/             # Page sections: Hero, Projects, About, Skills, Contact
+  lab/                  # The Lab 3D game (LabGame, Props, Poster, ProjectBuildings)
+  ui/                   # ProjectVisual (animated card previews)
+  GamePortal.tsx        # Full-screen overlay that wraps The Lab
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+data/
+  projects.ts           # ← single source of truth for all content
+                        #   (projects, skills, status labels)
+
+public/
+  Eugenio_Bustamante_CV.pdf
+  projects/             # Project screenshots used by ProjectVisual
+```
+
+**To update content:** edit `data/projects.ts`. Nothing else needs to change to add, reorder, or edit projects and skills.
+
+---
+
+## Deployment
+
+Vercel is connected to this repo. Every push to `main` triggers a production deploy. Pushes to other branches get Vercel preview deployments.
+
+---
+
+## The Lab
+
+"Enter the Lab" in the Hero opens a full-screen 3D world built with React Three Fiber. Drive a jeep around a city with WASD, explore project buildings, and find the secret dog house. See `handoff.md` for the full design notes.

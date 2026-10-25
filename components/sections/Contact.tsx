@@ -192,12 +192,20 @@ export default function Contact() {
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className="flex items-center gap-2 text-sm p-3 rounded-lg"
+                    className="flex items-start gap-2 text-sm p-3 rounded-lg"
                     style={{ background: "var(--tag-red-bg)", color: "var(--tag-red-text)" }}
                     role="alert"
                   >
-                    <Warning size={15} weight="bold" />
-                    Something went wrong. Please check your EmailJS setup or try again.
+                    <Warning size={15} weight="bold" className="shrink-0 mt-0.5" />
+                    <span>
+                      Something went wrong sending the form.{" "}
+                      <a
+                        href="mailto:eugeniobrb@icloud.com"
+                        className="underline"
+                      >
+                        Email me directly at eugeniobrb@icloud.com
+                      </a>
+                    </span>
                   </motion.div>
                 )}
 
