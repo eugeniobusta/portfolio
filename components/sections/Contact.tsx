@@ -277,7 +277,7 @@ export default function Contact() {
                   GitHub
                 </a>
                 <a
-                  href="https://linkedin.com/in/eugenio-bustamante-4018522ba"
+                  href="https://www.linkedin.com/in/eugeniobustamante"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm text-muted hover:text-ink transition-colors duration-200"

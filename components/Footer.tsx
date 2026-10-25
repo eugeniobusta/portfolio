@@ -23,7 +23,7 @@ export default function Footer() {
             <GithubLogo size={16} weight="bold" />
           </a>
           <a
-            href="https://linkedin.com/in/eugenio-bustamante-4018522ba"
+            href="https://www.linkedin.com/in/eugeniobustamante"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted hover:text-ink transition-colors duration-200"

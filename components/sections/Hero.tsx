@@ -342,18 +342,18 @@ export default function Hero({ onGameOpen, isCollapsing }: HeroProps) {
             animate={isCollapsing ? out.tagline : "visible"}
             className="text-lg text-muted leading-relaxed max-w-md mb-3"
           >
-            I build software — voice interfaces, 3D web experiences, matchmaking tools.
-            Figuring out what it means to actually ship products, not just demos.
+            CS student at DCU. I build and ship software.
           </motion.p>
 
-          {/* Simplicity — floats up against gravity */}
+          {/* Subline — floats up against gravity */}
           <motion.p
             variants={enter.simplicity as never}
             initial="hidden"
             animate={isCollapsing ? out.simplicity : "visible"}
             className="text-sm text-muted/60 italic font-serif mb-10"
           >
-            Simplicity is key. I love simplicity.
+            A mobile app in beta, a voice-to-calendar AI tool, and client work through my studio, Bynle.
+            Looking for a summer 2027 software engineering internship.
           </motion.p>
 
           {/* ── CTAs ── */}
@@ -464,7 +464,7 @@ export default function Hero({ onGameOpen, isCollapsing }: HeroProps) {
               bot={{ x:   70, y:  260, rotate:  33, delay: 0.65 }}
             >
               <a
-                href="https://linkedin.com/in/eugenio-bustamante-4018522ba"
+                href="https://www.linkedin.com/in/eugeniobustamante"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1.5 text-sm text-muted hover:text-ink transition-colors duration-200"
