@@ -411,6 +411,96 @@ function SweatShotVisual({ featured }: { featured?: boolean }) {
   );
 }
 
+function SpectralVisual({ featured }: { featured?: boolean }) {
+  const h = featured ? "h-52" : "h-28";
+  const peaks = [
+    { x: "14%", h: 18, d: "0s" },
+    { x: "21%", h: 52, d: "0.15s" },
+    { x: "28%", h: 28, d: "0.3s" },
+    { x: "38%", h: 72, d: "0.1s" },
+    { x: "46%", h: 38, d: "0.25s" },
+    { x: "55%", h: 90, d: "0.05s" },
+    { x: "62%", h: 44, d: "0.2s" },
+    { x: "70%", h: 62, d: "0.35s" },
+    { x: "80%", h: 24, d: "0.12s" },
+    { x: "88%", h: 36, d: "0.28s" },
+  ];
+
+  return (
+    <div
+      className={`relative ${h} w-full overflow-hidden rounded-t-xl flex items-end`}
+      style={{ background: "linear-gradient(160deg, oklch(14% 0.01 250) 0%, oklch(18% 0.015 260) 100%)" }}
+    >
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: "radial-gradient(ellipse 70% 40% at 55% 100%, oklch(62% 0.16 68 / 0.12), transparent)" }}
+      />
+
+      {/* Spectrum SVG */}
+      <svg
+        className="absolute inset-0 w-full h-full"
+        viewBox="0 0 400 120"
+        preserveAspectRatio="none"
+      >
+        {/* Baseline */}
+        <line x1="10" y1="100" x2="390" y2="100" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
+        {/* Peaks */}
+        {[
+          { cx: 56, h: 18 }, { cx: 84, h: 52 }, { cx: 112, h: 28 },
+          { cx: 152, h: 72 }, { cx: 184, h: 38 }, { cx: 220, h: 90 },
+          { cx: 248, h: 44 }, { cx: 280, h: 62 }, { cx: 320, h: 24 },
+          { cx: 352, h: 36 },
+        ].map((p, i) => (
+          <g key={i}>
+            <line
+              x1={p.cx} y1={100} x2={p.cx} y2={100 - p.h}
+              stroke={i === 5 ? "oklch(72% 0.155 68)" : "oklch(60% 0.10 200)"}
+              strokeWidth={i === 5 ? 2 : 1.5}
+              strokeLinecap="round"
+              opacity={0.7 + (p.h / 200)}
+            />
+            {/* Peak tick */}
+            <line
+              x1={p.cx - 2} y1={100 - p.h} x2={p.cx + 2} y2={100 - p.h}
+              stroke={i === 5 ? "oklch(72% 0.155 68)" : "oklch(60% 0.10 200)"}
+              strokeWidth="1"
+              opacity={0.6}
+            />
+          </g>
+        ))}
+        {/* Raman curve (faint background envelope) */}
+        <path
+          d="M10,100 C60,98 90,90 120,85 C150,80 170,70 220,10 C270,70 300,82 350,95 C370,98 390,100 400,100"
+          fill="none"
+          stroke="oklch(55% 0.08 200 / 0.2)"
+          strokeWidth="1.5"
+        />
+      </svg>
+
+      {/* Labels */}
+      <div className="relative z-10 w-full px-4 pb-3 flex items-end justify-between">
+        <div className="flex gap-2">
+          {["X-ray", "Raman"].map((label) => (
+            <span
+              key={label}
+              className="text-[8px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded"
+              style={{ background: "rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.35)" }}
+            >
+              {label}
+            </span>
+          ))}
+        </div>
+        <div
+          className="text-[8px] font-mono"
+          style={{ color: "oklch(72% 0.155 68 / 0.7)" }}
+        >
+          93.3% top-1
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function TennisVisual({ featured }: { featured?: boolean }) {
   return (
     <div className={`relative ${featured ? "h-52" : "h-32"} w-full overflow-hidden rounded-t-xl`}>
@@ -433,12 +523,13 @@ function TennisVisual({ featured }: { featured?: boolean }) {
 
 export default function ProjectVisual({ id, featured }: { id: string; featured?: boolean }) {
   switch (id) {
-    case "pitch":         return <PitchVisual  featured={featured} />;
-    case "cosmosbusta":   return <CosmosVisual  featured={featured} />;
-    case "voice-calendar":return <VoiceVisual   featured={featured} />;
-    case "startup-match": return <StartupVisual featured={featured} />;
-    case "social-tennis": return <TennisVisual    featured={featured} />;
-    case "sweatshot":     return <SweatShotVisual featured={featured} />;
-    default:              return null;
+    case "spectral-identifier": return <SpectralVisual featured={featured} />;
+    case "pitch":               return <PitchVisual    featured={featured} />;
+    case "cosmosbusta":         return <CosmosVisual   featured={featured} />;
+    case "voice-calendar":      return <VoiceVisual    featured={featured} />;
+    case "startup-match":       return <StartupVisual  featured={featured} />;
+    case "social-tennis":       return <TennisVisual   featured={featured} />;
+    case "sweatshot":           return <SweatShotVisual featured={featured} />;
+    default:                    return null;
   }
 }

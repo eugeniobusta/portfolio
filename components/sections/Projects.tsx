@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, GithubLogo, Lightbulb } from "@phosphor-icons/react";
-import { projects, ideas, statusLabel, statusColor, type Project, type Idea } from "@/data/projects";
+import { ArrowUpRight, GithubLogo } from "@phosphor-icons/react";
+import { projects, statusLabel, statusColor, type Project } from "@/data/projects";
 import ProjectVisual from "@/components/ui/ProjectVisual";
 
 /* Header slides from left */
@@ -93,9 +93,16 @@ function ProjectCard({
           </div>
         </div>
 
-        <p className="text-sm text-muted leading-relaxed flex-1 mb-4">
+        <p className="text-sm text-muted leading-relaxed mb-3">
           {project.description}
         </p>
+
+        {project.hardPart && (
+          <p className="text-xs text-muted/70 font-mono leading-relaxed flex-1 mb-4 border-l-2 border-frame pl-3">
+            {project.hardPart}
+          </p>
+        )}
+        {!project.hardPart && <div className="flex-1" />}
 
         {/* Tags + action buttons row */}
         <div className="flex items-end justify-between gap-3 mt-auto">
@@ -119,7 +126,7 @@ function ProjectCard({
                 GitHub
               </a>
             ) : (
-              <span className="text-[10px] text-muted/40 font-mono italic">private</span>
+              <span className="text-[10px] text-muted/40 font-mono italic">Private repo</span>
             )}
 
             {project.live && (
@@ -141,31 +148,6 @@ function ProjectCard({
   );
 }
 
-function IdeaCard({ idea, index }: { idea: Idea; index: number }) {
-  return (
-    <motion.article
-      custom={index}
-      variants={popUp}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-40px" }}
-      className="rounded-xl p-5 border border-dashed border-frame flex flex-col gap-3 opacity-80 hover:opacity-100 transition-opacity duration-300"
-      style={{ background: "var(--surface)" }}
-    >
-      <div className="flex items-center gap-2">
-        <Lightbulb size={14} weight="duotone" className="text-muted" />
-        <span className="eyebrow" style={{ fontSize: "0.6rem" }}>Upcoming</span>
-      </div>
-      <h4 className="font-serif text-base text-ink tracking-[-0.01em]">{idea.title}</h4>
-      <p className="text-xs text-muted leading-relaxed">{idea.description}</p>
-      <div className="flex flex-wrap gap-1 mt-auto">
-        {idea.tags.map((t) => (
-          <span key={t} className="tag tag-plain">{t}</span>
-        ))}
-      </div>
-    </motion.article>
-  );
-}
 
 export default function Projects() {
   const featured = projects.find((p) => p.featured)!;
@@ -188,9 +170,9 @@ export default function Projects() {
           </h2>
         </motion.div>
 
-        {/* Row 1: SweatShot (left) + Pitch (right) — equal halves */}
+        {/* Row 1: Spectral Identifier (left, featured) + SweatShot (right) — equal halves */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          {/* SweatShot — spinning border beam */}
+          {/* Spectral Identifier — spinning border beam */}
           <div className="relative rounded-[14px] overflow-hidden p-[2px]">
             <div
               className="absolute"
@@ -208,32 +190,10 @@ export default function Projects() {
           <ProjectCard project={rest[0]} index={1} direction="right" />
         </div>
 
-        {/* Row 2: four smaller cards in 4-col */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 mb-12">
+        {/* Row 2: three smaller cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
           {rest.slice(1).map((p, i) => (
             <ProjectCard key={p.id} project={p} index={i + 2} direction="up" />
-          ))}
-        </div>
-
-        <div className="divider mb-10" />
-
-        {/* Ideas lab */}
-        <motion.div
-          variants={fromLeft}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          className="mb-8"
-        >
-          <span className="eyebrow">Ideas Lab</span>
-          <p className="mt-3 text-sm text-muted max-w-md">
-            Things I want to build. Writing them down keeps me honest.
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {ideas.map((idea, i) => (
-            <IdeaCard key={idea.id} idea={idea} index={i} />
           ))}
         </div>
       </div>
