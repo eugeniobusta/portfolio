@@ -413,18 +413,6 @@ function SweatShotVisual({ featured }: { featured?: boolean }) {
 
 function SpectralVisual({ featured }: { featured?: boolean }) {
   const h = featured ? "h-52" : "h-28";
-  const peaks = [
-    { x: "14%", h: 18, d: "0s" },
-    { x: "21%", h: 52, d: "0.15s" },
-    { x: "28%", h: 28, d: "0.3s" },
-    { x: "38%", h: 72, d: "0.1s" },
-    { x: "46%", h: 38, d: "0.25s" },
-    { x: "55%", h: 90, d: "0.05s" },
-    { x: "62%", h: 44, d: "0.2s" },
-    { x: "70%", h: 62, d: "0.35s" },
-    { x: "80%", h: 24, d: "0.12s" },
-    { x: "88%", h: 36, d: "0.28s" },
-  ];
 
   return (
     <div
