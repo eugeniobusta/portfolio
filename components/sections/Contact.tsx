@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
-import { PaperPlaneTilt, Check, Warning, GithubLogo, LinkedinLogo } from "@phosphor-icons/react";
+import { PaperPlaneTilt, Check, Warning, GithubLogo, LinkedinLogo, Download } from "@phosphor-icons/react";
 import { sendEmail, type ContactFormData } from "@/lib/emailjs";
 
 type FormStatus = "idle" | "sending" | "success" | "error";
@@ -242,6 +242,21 @@ export default function Contact() {
                 className="text-sm text-ink hover:text-accent transition-colors duration-200 font-mono"
               >
                 eugeniobrb@icloud.com
+              </a>
+            </div>
+
+            <div className="divider" />
+
+            <div>
+              <a
+                href="/Eugenio_Bustamante_CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-frame text-sm text-ink
+                           hover:border-frame-strong hover:bg-surface transition-all duration-200"
+              >
+                <Download size={14} weight="bold" />
+                Download CV
               </a>
             </div>
 

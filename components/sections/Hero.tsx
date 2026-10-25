@@ -2,7 +2,7 @@
 
 import { type ReactNode, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowDown, ArrowRight, GithubLogo, LinkedinLogo } from "@phosphor-icons/react";
+import { ArrowDown, ArrowRight, GithubLogo, LinkedinLogo, Download } from "@phosphor-icons/react";
 
 /* ─── PHYSICS HELPERS ───────────────────────────────────────────────────── */
 
@@ -377,6 +377,24 @@ export default function Hero({ onGameOpen, isCollapsing }: HeroProps) {
               >
                 View work
                 <ArrowDown size={15} weight="bold" />
+              </a>
+            </BreakableElement>
+
+            {/* "Download CV" */}
+            <BreakableElement
+              isCollapsing={isCollapsing}
+              top={{ x: -80, y: -220, rotate: -40, delay: 0.46 }}
+              bot={{ x:  50, y:  290, rotate:  25, delay: 0.49 }}
+            >
+              <a
+                href="/Eugenio_Bustamante_CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-frame text-ink text-sm font-medium
+                           hover:border-frame-strong hover:bg-surface active:scale-[0.98] transition-all duration-200"
+              >
+                Download CV
+                <Download size={15} weight="bold" />
               </a>
             </BreakableElement>
 
