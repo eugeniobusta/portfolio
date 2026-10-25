@@ -33,28 +33,30 @@ const instrumentSerif = Instrument_Serif({
  * and Open Graph tags (the preview card when you share the link on LinkedIn).
  */
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.eugeniobusta.com"),
   title: {
     default: "Eugenio Bustamante",
     template: "%s | Eugenio Bustamante",
   },
   description:
-    "CS student in Dublin building software, mostly things with AI in them. Projects, ideas, and a 3D world to drive around.",
+    "Eugenio Bustamante: CS student at DCU building web, mobile and AI software. Projects, experience and CV.",
   keywords: ["Eugenio Bustamante", "portfolio", "CS student", "software developer", "React", "Python", "Dublin"],
   authors: [{ name: "Eugenio Bustamante" }],
   creator: "Eugenio Bustamante",
   openGraph: {
     type: "website",
     locale: "en_US",
+    url: "https://www.eugeniobusta.com",
     title: "Eugenio Bustamante",
     description:
-      "CS student in Dublin building software, mostly things with AI in them.",
+      "Eugenio Bustamante: CS student at DCU building web, mobile and AI software. Projects, experience and CV.",
     siteName: "Eugenio Bustamante",
   },
   twitter: {
     card: "summary_large_image",
     title: "Eugenio Bustamante",
     description:
-      "CS student in Dublin building software, mostly things with AI in them.",
+      "Eugenio Bustamante: CS student at DCU building web, mobile and AI software. Projects, experience and CV.",
   },
   robots: {
     index: true,
