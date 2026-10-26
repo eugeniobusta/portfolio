@@ -80,7 +80,7 @@ export const projects: Project[] = [
     github: "https://github.com/eugeniobusta/voice-calendar-ai",
     live: "https://voice-calendar-ai.onrender.com/",
     status: "complete",
-    year: "2025",
+    year: "2026",
     visual: "voice",
   },
   {
@@ -98,7 +98,7 @@ export const projects: Project[] = [
     github: "https://github.com/eugeniobusta/dcu-tennis-website",
     live: "https://dcu-tennis-website.vercel.app/",
     status: "complete",
-    year: "2025",
+    year: "2026",
     visual: "tennis",
   },
 ];
