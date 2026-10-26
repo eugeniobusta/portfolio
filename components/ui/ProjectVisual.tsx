@@ -412,79 +412,19 @@ function SweatShotVisual({ featured }: { featured?: boolean }) {
 }
 
 function SpectralVisual({ featured }: { featured?: boolean }) {
-  const h = featured ? "h-52" : "h-28";
-
   return (
-    <div
-      className={`relative ${h} w-full overflow-hidden rounded-t-xl flex items-end`}
-      style={{ background: "linear-gradient(160deg, oklch(14% 0.01 250) 0%, oklch(18% 0.015 260) 100%)" }}
-    >
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: "radial-gradient(ellipse 70% 40% at 55% 100%, oklch(62% 0.16 68 / 0.12), transparent)" }}
+    <div className={`relative ${featured ? "h-52" : "h-32"} w-full overflow-hidden rounded-t-xl`}>
+      <Image
+        src="/projects/spectral-identifier.png"
+        alt="Spectral Identifier — X-ray diffraction output"
+        fill
+        className="object-cover object-top"
+        sizes="(max-width: 768px) 100vw, 50vw"
       />
-
-      {/* Spectrum SVG */}
-      <svg
-        className="absolute inset-0 w-full h-full"
-        viewBox="0 0 400 120"
-        preserveAspectRatio="none"
-      >
-        {/* Baseline */}
-        <line x1="10" y1="100" x2="390" y2="100" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
-        {/* Peaks */}
-        {[
-          { cx: 56, h: 18 }, { cx: 84, h: 52 }, { cx: 112, h: 28 },
-          { cx: 152, h: 72 }, { cx: 184, h: 38 }, { cx: 220, h: 90 },
-          { cx: 248, h: 44 }, { cx: 280, h: 62 }, { cx: 320, h: 24 },
-          { cx: 352, h: 36 },
-        ].map((p, i) => (
-          <g key={i}>
-            <line
-              x1={p.cx} y1={100} x2={p.cx} y2={100 - p.h}
-              stroke={i === 5 ? "oklch(72% 0.155 68)" : "oklch(60% 0.10 200)"}
-              strokeWidth={i === 5 ? 2 : 1.5}
-              strokeLinecap="round"
-              opacity={0.7 + (p.h / 200)}
-            />
-            {/* Peak tick */}
-            <line
-              x1={p.cx - 2} y1={100 - p.h} x2={p.cx + 2} y2={100 - p.h}
-              stroke={i === 5 ? "oklch(72% 0.155 68)" : "oklch(60% 0.10 200)"}
-              strokeWidth="1"
-              opacity={0.6}
-            />
-          </g>
-        ))}
-        {/* Raman curve (faint background envelope) */}
-        <path
-          d="M10,100 C60,98 90,90 120,85 C150,80 170,70 220,10 C270,70 300,82 350,95 C370,98 390,100 400,100"
-          fill="none"
-          stroke="oklch(55% 0.08 200 / 0.2)"
-          strokeWidth="1.5"
-        />
-      </svg>
-
-      {/* Labels */}
-      <div className="relative z-10 w-full px-4 pb-3 flex items-end justify-between">
-        <div className="flex gap-2">
-          {["X-ray", "Raman"].map((label) => (
-            <span
-              key={label}
-              className="text-[8px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded"
-              style={{ background: "rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.35)" }}
-            >
-              {label}
-            </span>
-          ))}
-        </div>
-        <div
-          className="text-[8px] font-mono"
-          style={{ color: "oklch(72% 0.155 68 / 0.7)" }}
-        >
-          93.3% top-1
-        </div>
-      </div>
+      <div
+        className="absolute inset-0"
+        style={{ background: "linear-gradient(to bottom, transparent 50%, oklch(14% 0.01 250 / 0.6) 100%)" }}
+      />
     </div>
   );
 }

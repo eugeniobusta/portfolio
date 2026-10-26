@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, GithubLogo } from "@phosphor-icons/react";
+import { ArrowUpRight, GithubLogo, LinkedinLogo } from "@phosphor-icons/react";
 import { projects, statusLabel, statusColor, type Project } from "@/data/projects";
 import ProjectVisual from "@/components/ui/ProjectVisual";
 
@@ -112,7 +112,7 @@ function ProjectCard({
             ))}
           </div>
 
-          {/* GitHub + Live buttons — stacked vertically so they never get cut in narrow columns */}
+          {/* Action buttons — stacked vertically */}
           <div className="flex flex-col items-end gap-1.5 shrink-0">
             {project.github ? (
               <a
@@ -127,6 +127,19 @@ function ProjectCard({
               </a>
             ) : (
               <span className="text-[10px] text-muted/40 font-mono italic">Private repo</span>
+            )}
+
+            {project.linkedin && (
+              <a
+                href={project.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-frame text-xs text-muted hover:text-ink hover:border-frame-strong transition-all duration-200"
+                aria-label={`${project.title} on LinkedIn`}
+              >
+                <LinkedinLogo size={12} weight="bold" />
+                LinkedIn
+              </a>
             )}
 
             {project.live && (
@@ -148,7 +161,6 @@ function ProjectCard({
   );
 }
 
-
 export default function Projects() {
   const featured = projects.find((p) => p.featured)!;
   const rest      = projects.filter((p) => !p.featured);
@@ -166,14 +178,17 @@ export default function Projects() {
         >
           <span className="eyebrow mb-4 block">Work</span>
           <h2 className="font-serif text-[clamp(2rem,5vw,3.5rem)] leading-[1.05] tracking-[-0.02em] text-ink">
-            Things I've built.
+            Things I&apos;ve built.
           </h2>
         </motion.div>
 
-        {/* Row 1: Spectral Identifier (left, featured) + SweatShot (right) — equal halves */}
+        {/* Row 1: SweatShot (left, featured, spinning border beam) + Spectral Identifier (right) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          {/* Spectral Identifier — spinning border beam */}
-          <div className="relative rounded-[14px] overflow-hidden p-[2px]">
+          {/* SweatShot — spinning border beam, clipped with clip-path so gradient stays inside */}
+          <div
+            className="relative rounded-[14px] p-[2px]"
+            style={{ clipPath: "inset(0 round 14px)" }}
+          >
             <div
               className="absolute"
               style={{
@@ -190,8 +205,8 @@ export default function Projects() {
           <ProjectCard project={rest[0]} index={1} direction="right" />
         </div>
 
-        {/* Row 2: three smaller cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+        {/* Row 2: two smaller cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {rest.slice(1).map((p, i) => (
             <ProjectCard key={p.id} project={p} index={i + 2} direction="up" />
           ))}

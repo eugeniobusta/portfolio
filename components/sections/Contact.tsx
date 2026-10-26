@@ -258,8 +258,7 @@ export default function Contact() {
             <div>
               <a
                 href="/Eugenio_Bustamante_CV.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                download="Eugenio_Bustamante_CV.pdf"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-frame text-sm text-ink
                            hover:border-frame-strong hover:bg-surface transition-all duration-200"
               >

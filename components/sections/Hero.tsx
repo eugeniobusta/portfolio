@@ -388,8 +388,7 @@ export default function Hero({ onGameOpen, isCollapsing }: HeroProps) {
             >
               <a
                 href="/Eugenio_Bustamante_CV.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                download="Eugenio_Bustamante_CV.pdf"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-frame text-ink text-sm font-medium
                            hover:border-frame-strong hover:bg-surface active:scale-[0.98] transition-all duration-200"
               >

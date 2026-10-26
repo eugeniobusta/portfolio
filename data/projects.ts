@@ -2,7 +2,7 @@
  * Single source of truth for portfolio content.
  * Edit here — nothing else needs to change.
  *
- * `status`:  "live" | "dev" | "complete" | "idea"
+ * `status`:  "live" | "dev" | "complete"
  * `tagColor`: controls which pastel tag style is applied
  */
 
@@ -16,40 +16,14 @@ export interface Project {
   stack: { name: string; color: TagColor }[];
   github: string | null;
   live: string | null;
+  linkedin?: string;
   status: "live" | "dev" | "complete";
   year: string;
   featured?: boolean;
   visual: "spectral" | "pitch" | "cosmosbusta" | "voice" | "startup" | "tennis" | "sweatshot";
 }
 
-export interface Idea {
-  id: string;
-  title: string;
-  description: string;
-  tags: string[];
-}
-
 export const projects: Project[] = [
-  {
-    id: "spectral-identifier",
-    title: "Spectral Identifier",
-    description:
-      "Open-source tool that identifies minerals from real X-ray diffraction and Raman spectra. Built during the OSI Hackathon 2026 with a 4-person international team. I joined mid-sprint, built the marimo web app (X-ray, Raman and AI literature-search tabs), the core layer connecting the research code to the UI, and 7 pytest tests verifying the app reproduces the benchmark results (93.3% top-1 Raman identification, ~0.003 Å median lattice error).",
-    hardPart: "Hard part: wrapping research code in an app without changing its results; tests pin the app to the benchmark numbers.",
-    stack: [
-      { name: "Python", color: "green" },
-      { name: "marimo", color: "amber" },
-      { name: "NumPy", color: "blue" },
-      { name: "SciPy", color: "blue" },
-      { name: "pytest", color: "plain" },
-    ],
-    github: "https://github.com/WilmerGaspar/spectral-identifier-v1",
-    live: null,
-    status: "complete",
-    year: "2026",
-    featured: true,
-    visual: "spectral",
-  },
   {
     id: "sweatshot",
     title: "SweatShot",
@@ -67,7 +41,28 @@ export const projects: Project[] = [
     live: "https://sweatshot.app",
     status: "dev",
     year: "2026",
+    featured: true,
     visual: "sweatshot",
+  },
+  {
+    id: "spectral-identifier",
+    title: "Spectral Identifier",
+    description:
+      "Open-source tool that identifies minerals from real X-ray diffraction and Raman spectra. Built during the OSI Hackathon 2026 with a 4-person international team. I joined mid-sprint, built the marimo web app (X-ray, Raman and AI literature-search tabs), the core layer connecting the research code to the UI, and 7 pytest tests verifying the app reproduces the benchmark results (93.3% top-1 Raman identification, ~0.003 Å median lattice error).",
+    hardPart: "Hard part: wrapping research code in an app without changing its results; tests pin the app to the benchmark numbers.",
+    stack: [
+      { name: "Python", color: "green" },
+      { name: "marimo", color: "amber" },
+      { name: "NumPy", color: "blue" },
+      { name: "SciPy", color: "blue" },
+      { name: "pytest", color: "plain" },
+    ],
+    github: "https://github.com/WilmerGaspar/spectral-identifier-v1",
+    live: null,
+    linkedin: "https://www.linkedin.com/in/eugeniobustamante/details/projects/",
+    status: "complete",
+    year: "2026",
+    visual: "spectral",
   },
   {
     id: "voice-calendar",
@@ -105,23 +100,6 @@ export const projects: Project[] = [
     status: "complete",
     year: "2025",
     visual: "tennis",
-  },
-  {
-    id: "cosmosbusta",
-    title: "CosmosBusta",
-    description:
-      "3D solar system you can actually fly around in. Built with React Three Fiber and real NASA orbital data. Zoom in on any planet and read what it's made of.",
-    stack: [
-      { name: "Next.js", color: "plain" },
-      { name: "React Three Fiber", color: "blue" },
-      { name: "Three.js", color: "blue" },
-      { name: "TypeScript", color: "blue" },
-    ],
-    github: "https://github.com/eugeniobusta/cosmosbusta",
-    live: null,
-    status: "dev",
-    year: "2025",
-    visual: "cosmosbusta",
   },
 ];
 
