@@ -44,11 +44,12 @@ function StatusBadge({ status }: { status: Project["status"] }) {
 }
 
 function ProjectCard({
-  project, index, direction = "up",
+  project, index, direction = "up", tall = false,
 }: {
   project: Project;
   index: number;
   direction?: "left" | "right" | "up";
+  tall?: boolean;
 }) {
   const variants = direction === "left" ? fromLeftCard : direction === "right" ? fromRight : popUp;
 
@@ -63,7 +64,7 @@ function ProjectCard({
       style={{ borderRadius: 12 }}
     >
       {/* Animated visual preview */}
-      <ProjectVisual id={project.id} featured={project.featured} />
+      <ProjectVisual id={project.id} featured={project.featured || tall} />
 
       {/* Card content */}
       <div className="p-5 flex flex-col flex-1">
@@ -184,9 +185,9 @@ export default function Projects() {
 
         {/* Row 1: SweatShot (left, featured, spinning border beam) + Spectral Identifier (right) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          {/* SweatShot — spinning border beam, clipped with clip-path so gradient stays inside */}
+          {/* SweatShot — overflow-hidden clips layout; clip-path clips paint (prevents gradient bleed in Chrome) */}
           <div
-            className="relative rounded-[14px] p-[2px]"
+            className="relative rounded-[14px] overflow-hidden p-[2px]"
             style={{ clipPath: "inset(0 round 14px)" }}
           >
             <div
@@ -202,13 +203,14 @@ export default function Projects() {
               <ProjectCard project={featured} index={0} direction="left" />
             </div>
           </div>
-          <ProjectCard project={rest[0]} index={1} direction="right" />
+          {/* Right column — tall=true so the visual matches the featured card's height */}
+          <ProjectCard project={rest[0]} index={1} direction="right" tall />
         </div>
 
-        {/* Row 2: two smaller cards */}
+        {/* Row 2: two cards — tall=true for a fuller preview height */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {rest.slice(1).map((p, i) => (
-            <ProjectCard key={p.id} project={p} index={i + 2} direction="up" />
+            <ProjectCard key={p.id} project={p} index={i + 2} direction="up" tall />
           ))}
         </div>
       </div>

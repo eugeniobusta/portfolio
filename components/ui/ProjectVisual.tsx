@@ -122,7 +122,7 @@ function VoiceVisual({ featured }: { featured?: boolean }) {
   ];
 
   return (
-    <div className={`relative ${featured ? "h-52" : "h-28"} w-full overflow-hidden rounded-t-xl flex items-center`}
+    <div className={`relative ${featured ? "h-52" : "h-44"} w-full overflow-hidden rounded-t-xl flex items-center`}
       style={{ background: "linear-gradient(135deg, oklch(18% 0.01 145) 0%, oklch(22% 0.02 160) 100%)" }}>
 
       <div className="absolute inset-0 pointer-events-none"
@@ -413,7 +413,7 @@ function SweatShotVisual({ featured }: { featured?: boolean }) {
 
 function SpectralVisual({ featured }: { featured?: boolean }) {
   return (
-    <div className={`relative ${featured ? "h-52" : "h-32"} w-full overflow-hidden rounded-t-xl`}>
+    <div className={`relative ${featured ? "h-52" : "h-44"} w-full overflow-hidden rounded-t-xl`}>
       <Image
         src="/projects/spectral-identifier.png"
         alt="Spectral Identifier — X-ray diffraction output"
@@ -431,7 +431,7 @@ function SpectralVisual({ featured }: { featured?: boolean }) {
 
 function TennisVisual({ featured }: { featured?: boolean }) {
   return (
-    <div className={`relative ${featured ? "h-52" : "h-32"} w-full overflow-hidden rounded-t-xl`}>
+    <div className={`relative ${featured ? "h-52" : "h-44"} w-full overflow-hidden rounded-t-xl`}>
       <Image
         src="/projects/social-tennis.png"
         alt="DCU Social Tennis"

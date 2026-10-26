@@ -298,7 +298,7 @@ export default function Contact() {
             <div className="divider" />
 
             <p className="text-xs text-muted leading-relaxed font-mono">
-              Response time: usually under 48h.
+              Response time: usually under 24h.
               <br />
               I'm based in Europe (CET).
             </p>
